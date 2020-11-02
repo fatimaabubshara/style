@@ -13,10 +13,8 @@ class Modal extends React.Component {
   }
 
   submitAddNew(values) {
-    ////////////////////////
-    var item = [...this.state.newSub];
-    item.push(this.newText.value);
-    //debugger;
+    var item = values.newSub.split (" ");
+
     fetchAPIAddnewFood({
       categoryType: values.newTypeFood,
       categorySubType: item,
@@ -49,18 +47,10 @@ class Modal extends React.Component {
               name="newSub"
               id="newSub"
               component="input"
-              ref={(ip) => {
-                this.newText = ip;
-              }}
             />
           </div>
           <div>
             <button type="submit">ADD Food Type</button>
-            <ul>
-              {this.state.newSub.map(function (todo) {
-                return <li>{todo}</li>;
-              })}
-            </ul>
           </div>
         </form>
       </div>
